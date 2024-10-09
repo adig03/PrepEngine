@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867680242134",
+    "project_id": "codemastery-ce46e",
+    "storage_bucket": "codemastery-ce46e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867680242134:android:da2e02cb39a863c8923c77",
+        "android_client_info": {
+          "package_name": "com.example.codemastery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtdNVYsFhn5HmFcGvR5ob_XPYMFOsPups"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
