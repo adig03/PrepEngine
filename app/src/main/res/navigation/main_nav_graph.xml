@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_subtopicFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="subjectTitle"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

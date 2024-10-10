@@ -5,55 +5,90 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.codemastery.Models.RecyclerItem
+import com.example.codemastery.Models.SubTopicGridItem
+import com.example.codemastery.adapters.TopicRVAdapter
+import com.example.codemastery.adapters.TopicsGridAdapters
+import com.example.codemastery.databinding.FragmentSubtopicBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SubtopicFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SubtopicFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentSubtopicBinding
+    private lateinit var topicRVAdapter: TopicRVAdapter
+    private lateinit var gridAdapter: TopicsGridAdapters
+
+    val args: SubtopicFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subtopic, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subtopic, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SubtopicFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SubtopicFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        displayGrid()
+
+        val subjectName = args.subjectTitle.toString()
+        binding.toolbar2.setTitle(subjectName)
+        when (subjectName) {
+            "Computer Network" -> {
+//                displayComputerNetworkTopics()
             }
+            "Data Structures" -> {
+                displayDataStructuresTopics()
+            }
+        }
+    }
+
+    private fun displayDataStructuresTopics() {
+        val allTopicListItem = arrayListOf(
+            RecyclerItem("Arrays", "X Questions", R.drawable.array),
+            RecyclerItem("Linked Lists", "Y Questions", R.drawable.linklist),
+            RecyclerItem("Stacks", "Z Questions", R.drawable.stacks),
+            RecyclerItem("Hash Table", "W Questions", R.drawable.hashtable),
+            RecyclerItem("Heaps", "Q Questions", R.drawable.heap),
+            RecyclerItem("Trees", "S Questions", R.drawable.binarytree),
+            RecyclerItem("Graphs", "E Questions", R.drawable.graph)
+        )
+
+        topicRVAdapter = TopicRVAdapter(allTopicListItem)
+
+        // Setting LayoutManager to ensure proper display
+        binding.topicRv.layoutManager = LinearLayoutManager(requireContext())
+        binding.topicRv.adapter = topicRVAdapter
+    }
+
+//    private fun displayComputerNetworkTopics() {
+//        val allTopicListItem = arrayListOf(
+//            RecyclerItem("OSI Model", "X Questions", R.drawable.osi_model),
+//            RecyclerItem("TCP/IP Model", "Y Questions", R.drawable.tcp_ip),
+//            RecyclerItem("Routing Algorithms", "Z Questions", R.drawable.routing),
+//            RecyclerItem("IP Addressing", "W Questions", R.drawable.ip_addressing),
+//            RecyclerItem("Network Layers", "Q Questions", R.drawable.network_layers)
+//        )
+
+//        topicRVAdapter = TopicRVAdapter(allTopicListItem)
+//
+//        binding.topicRv.layoutManager = LinearLayoutManager(requireContext())
+//        binding.topicRv.adapter = topicRVAdapter
+//    }
+
+    private fun displayGrid() {
+        val allGridItems = arrayListOf(
+            SubTopicGridItem(R.drawable.stickynotes, "Notes"),
+            SubTopicGridItem(R.drawable.testpapers, "Test Papers"),
+            SubTopicGridItem(R.drawable.videolectures, "Video Lectures"),
+            SubTopicGridItem(R.drawable.flashcard, "Flash Cards")
+        )
+
+        gridAdapter = TopicsGridAdapters(requireContext(), allGridItems)
+        binding.topicGrid.adapter = gridAdapter
     }
 }

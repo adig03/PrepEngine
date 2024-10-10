@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.codemastery.HomeFragmentDirections
 import com.example.codemastery.Models.RecyclerItem
 import com.example.codemastery.R
 
@@ -37,6 +39,14 @@ class MyRecyclerAdapter( val rvItems:List<RecyclerItem>)
         holder.itemTitle.text =item.topicName
         holder.itemView.alpha = 0f
         holder.itemView.animate().alpha(1f).setDuration(500).start()
+
+
+        holder.itemView.setOnClickListener{
+            val action = HomeFragmentDirections.actionHomeFragmentToSubtopicFragment(item.topicName)
+
+            it.findNavController().navigate(action)
+
+        }
 
 
     }

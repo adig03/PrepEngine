@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SubtopicFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".SubtopicFragment"
+        android:background="@drawable/appbackground"
+       >
 
-</FrameLayout>
+        <Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:navigationIcon="@drawable/ic_back"
+            android:title=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <GridView
+            android:id="@+id/topicGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:verticalSpacing="16dp"
+            android:numColumns="2"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+       <TextView
+           android:textStyle="bold"
+           android:id="@+id/TopicTitles"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Topics"
+           android:layout_marginVertical="16dp"
+           android:layout_marginStart="24dp"
+           android:textSize="20sp"
+           app:layout_constraintTop_toBottomOf="@+id/topicGrid"
+           app:layout_constraintBottom_toTopOf="@+id/topic_rv"
+           app:layout_constraintStart_toStartOf="parent"
+           />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/topic_rv"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="8dp"
+
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TopicTitles"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
