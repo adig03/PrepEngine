@@ -6,7 +6,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProfileFragment">
+        tools:context=".ProfileFragment"
+        android:background="@drawable/appbackground">
         <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -19,125 +20,211 @@
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileCard"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="32dp"
-            android:background="@drawable/editable_text_bg"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingHorizontal="16dp"
-            >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <LinearLayout
-                android:id="@+id/settings_to_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/editable_text_bg">
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
 
-                    />
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/settings_to_profile"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="24dp">
-                    <TextView
-                        android:id="@+id/logged_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Aditya Gupta"
-                        android:textSize="20sp"
+
+                    android:background="@drawable/editable_text_bg"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/adityagupta"
+
                         />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/logged_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="Aditya Gupta"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minLines="2"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/lato"
+                            android:text="@string/aditya10102003_gmail_com"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/badgescard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="16dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Badges"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:fontFamily="@font/lato"
+                />
+
+            <GridView
+                android:id="@+id/badgesGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:numColumns="3"
+                android:layout_marginBottom="24dp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/settingCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/badgescard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    tools:layout_editor_absoluteY="285dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minLines="2"
-                        android:text="jai shree ram (about) jkncjwnevnjbvjwbjcvkwjkcbjwnkjwbfjnfjk2f"
-                        android:textSize="12sp"/>
+                        android:text="Notifications"
+                        android:fontFamily="@font/lato"
+                        android:textSize="16sp" />
+
+                    <Switch
+
+                        android:id="@+id/notification_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="150dp"
+                        android:background="@drawable/editable_text_bg"
+                        android:checked="true"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/editable_text_bg">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Notifications"
-
-                    android:textSize="16sp"
-                    />
-
-                <Switch
-
-                    android:id="@+id/notification_switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="150dp"
-                    android:background="@drawable/editable_text_bg"
-                    android:checked="true"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp" />
-            </LinearLayout><!-- Notifications Toggle -->
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp"
-                android:background="@drawable/editable_text_bg">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Theme"
-                    android:textSize="16sp"
-                    />
-
-                <Spinner
-                    android:id="@+id/theme_spinner"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_marginStart="150dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/spinner_bg" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="16dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="205dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Theme"
+                        android:fontFamily="@font/lato"
+                        android:textSize="16sp" />
+
+                    <Spinner
+                        android:id="@+id/theme_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="150dp"
+                        android:background="@drawable/spinner_bg" />
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/Logout_button"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/gradient_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="#FF9800"
+                    android:text="Log Out"
+                    android:textColor="@android:color/white"
+                     />
+
             </LinearLayout>
 
 
-            <!-- Logout Button -->
-            <Button
-                android:id="@+id/logout_button"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="Log Out"
-                android:backgroundTint="#FF9800"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="24dp" />
-
-        </LinearLayout>
-
+        </androidx.cardview.widget.CardView>
 
 
 

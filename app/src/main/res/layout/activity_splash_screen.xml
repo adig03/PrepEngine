@@ -22,33 +22,33 @@
         app:lottie_rawRes="@raw/_ds"
         app:lottie_renderMode="hardware" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/animation"
-        app:layout_constraintVertical_bias="0.0"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/_text3"
-        app:lottie_renderMode="hardware" />
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/animation"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_loop="false"-->
+<!--        app:lottie_rawRes="@raw/_text3"-->
+<!--        app:lottie_renderMode="hardware" />-->
 
     <TextView
         android:id="@+id/textView"
         style="@style/Widget.AppCompat.TextView.SpinnerItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MASTER DSA EFFICIENTLY"
+        android:text="Prep Smarter, Achieve Greater Results!"
         android:textColor="#273951"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text"
+        app:layout_constraintTop_toBottomOf="@id/animation"
         app:layout_constraintVertical_bias="0.728" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
