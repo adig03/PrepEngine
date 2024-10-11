@@ -4,32 +4,23 @@ import UserRepo
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.example.codemastery.Models.GridItem
 import com.example.codemastery.Models.RecyclerItem
 import com.example.codemastery.adapters.MyGridAdapter
 import com.example.codemastery.adapters.MyRecyclerAdapter
 import com.example.codemastery.databinding.FragmentHomeBinding
-
-import com.example.codemastery.user.User
 import com.example.codemastery.viewModels.AppViewModel
 import com.example.codemastery.viewModels.AppViewModelFactory
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
