@@ -1,6 +1,6 @@
 package com.example.codemastery
 
-import UserRepo
+
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,7 +11,8 @@ import android.widget.GridView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codemastery.Models.GridItem
@@ -20,7 +21,7 @@ import com.example.codemastery.adapters.MyGridAdapter
 import com.example.codemastery.adapters.MyRecyclerAdapter
 import com.example.codemastery.databinding.FragmentHomeBinding
 import com.example.codemastery.viewModels.AppViewModel
-import com.example.codemastery.viewModels.AppViewModelFactory
+
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -51,16 +52,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         displayGrid(view)
 
-        displayRecyclerView(view)
-
-        val userRepo = UserRepo()
-        val viewModelFactory = AppViewModelFactory(userRepo)
-
-        appViewModel = ViewModelProvider(this, viewModelFactory)[AppViewModel::class.java]
+        displayRecyclerView()
 
 
-
-
+        binding.circularView.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
 
 
 
@@ -99,10 +96,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         grid.adapter = myAdapter
     }
 
-    private fun displayRecyclerView(view: View) {
-        val cardsRecyclerView: RecyclerView = view.findViewById(R.id.MyRecylerView)
-        val gridLayoutManager = GridLayoutManager(requireContext(), 1,GridLayoutManager.VERTICAL, false)
+    private fun displayRecyclerView() {
+        val cardsRecyclerView: RecyclerView = binding.MyRecylerView
+        val gridLayoutManager = GridLayoutManager(requireContext(), 1, GridLayoutManager.VERTICAL, false)
         cardsRecyclerView.layoutManager = gridLayoutManager
+
+        // Disable nested scrolling for RecyclerView
+        cardsRecyclerView.isNestedScrollingEnabled = false
 
         val lowerGrid = arrayListOf(
             RecyclerItem("Data Structures", "9 Topics", R.drawable.datastructures),
@@ -115,13 +115,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             RecyclerItem("Programming Paradigms", "5 Topics", R.drawable.programmingpara),
             RecyclerItem("Git Fundamentals", "X Topics", R.drawable.git),
             RecyclerItem("Security Basics", "3 Topics", R.drawable.securitybasis),
+        )
 
-            )
-
-
-        val  lowerGridAdapter = MyRecyclerAdapter(lowerGrid)
+        val lowerGridAdapter = MyRecyclerAdapter(lowerGrid)
         cardsRecyclerView.adapter = lowerGridAdapter
-
     }
 }
 
