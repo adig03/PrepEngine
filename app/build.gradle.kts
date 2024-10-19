@@ -92,4 +92,5 @@ dependencies {
     // Google sign-in and YouTube API
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("com.google.apis:google-api-services-youtube:v3-rev20210915-1.32.1")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 }
