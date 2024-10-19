@@ -12,21 +12,20 @@
     tools:context=".intro.Fragments.IntroFragment">
 
 
+        <ImageView
+            android:id="@+id/introImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
 
-    <ImageView
-        android:id="@+id/introImage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+            android:src="@drawable/codeseekho_appintro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.129" />
 
-        android:src="@drawable/codeseekho_appintro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
-
-    <TextView
+        <TextView
         android:id="@+id/IntroLines"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
@@ -64,6 +63,26 @@
         android:layout_marginHorizontal="24dp"/>
 
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:text="Or Sign in using "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/signInWithGoogle"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/google"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_vid_graph"
+    app:startDestination="@id/videolistFragment">
+
+    <fragment
+        android:id="@+id/videolistFragment"
+        android:name="com.example.codemastery.VideoLecture.Fragments.VideolistFragment"
+        android:label="fragment_videolist"
+        tools:layout="@layout/fragment_videolist" >
+        <action
+            android:id="@+id/action_videolistFragment_to_videoWebviewFragment"
+            app:destination="@id/videoWebviewFragment" />
+
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/videoWebviewFragment"
+        android:name="com.example.codemastery.VideoLecture.Fragments.VideoWebviewFragment"
+        android:label="fragment_video_webview"
+        tools:layout="@layout/fragment_video_webview" >
+        <action
+            android:id="@+id/action_videoWebviewFragment_to_videolistFragment"
+            app:destination="@id/videolistFragment" />
+        <argument
+            android:name="VideoUrl"
+            app:argType="string" />
+    </fragment>
+</navigation>

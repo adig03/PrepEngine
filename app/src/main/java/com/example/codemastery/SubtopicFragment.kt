@@ -180,7 +180,7 @@ class SubtopicFragment : Fragment() {
             SubTopicGridItem(R.drawable.flashcard, "Flash Cards")
         )
 
-        gridAdapter = TopicsGridAdapters(requireContext(), allGridItems)
+        gridAdapter = TopicsGridAdapters(requireContext(), allGridItems , args.subjectTitle)
         binding.topicGrid.adapter = gridAdapter
     }
 }

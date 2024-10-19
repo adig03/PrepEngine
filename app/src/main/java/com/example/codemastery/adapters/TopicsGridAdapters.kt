@@ -1,6 +1,7 @@
 package com.example.codemastery.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,34 +10,42 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.codemastery.Models.SubTopicGridItem
 import com.example.codemastery.R
-import com.example.codemastery.R.layout.topics_rv_item
+import com.example.codemastery.VideoLecture.VideoLectureActivity
 
-class  TopicsGridAdapters(context: Context, val GridItems: ArrayList<SubTopicGridItem>): BaseAdapter() {
-    val inflater: LayoutInflater = LayoutInflater.from(context)
-    override fun getCount(): Int {
-        return GridItems.size
-    }
+class TopicsGridAdapters(
+    private val context: Context,  // Context reference
+    private val gridItems: ArrayList<SubTopicGridItem>,
+    private val subject: String
+) : BaseAdapter() {
 
-    override fun getItem(p0: Int): Any {
-        return GridItems[p0]
-    }
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    override fun getItemId(p0: Int): Long {
-        return p0.toLong()
-    }
+    override fun getCount(): Int = gridItems.size
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val itemView: View = p1 ?: inflater.inflate(topics_rv_item, p2, false)
+    override fun getItem(position: Int): Any = gridItems[position]
 
-       val currentItem = GridItems[p0]
+    override fun getItemId(position: Int): Long = position.toLong()
 
-        val gridText: TextView = itemView.findViewById<TextView>(R.id.cardTitleText)
-        val gridImage: ImageView = itemView.findViewById<ImageView>(R.id.cardImageView)
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val itemView: View = convertView ?: inflater.inflate(R.layout.topics_rv_item, parent, false)
+
+        val currentItem = gridItems[position]
+
+        val gridText: TextView = itemView.findViewById(R.id.cardTitleText)
+        val gridImage: ImageView = itemView.findViewById(R.id.cardImageView)
 
         gridText.text = currentItem.Title
         gridImage.setImageResource(currentItem.imageView)
 
-        return itemView
+        itemView.setOnClickListener {
+            if (currentItem.Title == "Video Lectures") {
+                val intent = Intent(context, VideoLectureActivity::class.java).apply {
+                    putExtra("subject", subject)
+                }
+                context.startActivity(intent)
+            }
+        }
 
+        return itemView
     }
 }

@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.8.1")
+        classpath ("com.google.gms:google-services:4.3.15")
     }
 }
 plugins {
@@ -13,3 +14,6 @@ plugins {
     alias(libs.plugins.google.gms.google.services) apply false
 
 }
+
+
+
