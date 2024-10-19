@@ -1,4 +1,4 @@
-package com.example.codemastery
+package com.example.codemastery.main.Fragments
 
 
 import android.os.Bundle
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codemastery.Models.GridItem
 import com.example.codemastery.Models.RecyclerItem
+import com.example.codemastery.R
 import com.example.codemastery.adapters.MyGridAdapter
 import com.example.codemastery.adapters.MyRecyclerAdapter
 import com.example.codemastery.databinding.FragmentHomeBinding

@@ -1,4 +1,4 @@
-package com.example.codemastery
+package com.example.codemastery.main.Fragments
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
@@ -12,7 +12,7 @@ import android.widget.GridView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.codemastery.Models.Badge
-import com.example.codemastery.Models.GridItem
+import com.example.codemastery.R
 import com.example.codemastery.adapters.BadgeAdapter
 import com.example.codemastery.databinding.FragmentProfileBinding
 import com.example.codemastery.intro.IntroActivity
@@ -34,7 +34,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater ,R.layout.fragment_profile, container ,false)
+        binding = DataBindingUtil.inflate(inflater , R.layout.fragment_profile, container ,false)
         return binding.root
     }
 
@@ -95,12 +95,24 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         // Create a list of Badge objects with the required badge names
         val allbadges = arrayListOf(
-            Badge("Newbie", "Welcome to the platform! You've just started your journey.", "Level 1", R.drawable.newbie_badge),
-            Badge("Rookie", "Great start! You've successfully completed your first milestone.", "Level 2", R.drawable.rookie_badge),
-            Badge("Conqueror", "You’ve completed major challenges and conquered your fears!", "Level 3", R.drawable.conqueror_badge),
-            Badge("Expert", "Your knowledge has reached expert levels. Well done!", "Level 4", R.drawable.expert_badge),
-            Badge("Legend", "You’ve achieved legendary status by completing all tasks flawlessly!", "Level 5", R.drawable.legend_badge),
-            Badge("Explorer", "You've explored every section of the app. Keep discovering!", "Level 6", R.drawable.explorer_badge)
+            Badge("Newbie", "Welcome to the platform! You've just started your journey.", "Level 1",
+                R.drawable.newbie_badge
+            ),
+            Badge("Rookie", "Great start! You've successfully completed your first milestone.", "Level 2",
+                R.drawable.rookie_badge
+            ),
+            Badge("Conqueror", "You’ve completed major challenges and conquered your fears!", "Level 3",
+                R.drawable.conqueror_badge
+            ),
+            Badge("Expert", "Your knowledge has reached expert levels. Well done!", "Level 4",
+                R.drawable.expert_badge
+            ),
+            Badge("Legend", "You’ve achieved legendary status by completing all tasks flawlessly!", "Level 5",
+                R.drawable.legend_badge
+            ),
+            Badge("Explorer", "You've explored every section of the app. Keep discovering!", "Level 6",
+                R.drawable.explorer_badge
+            )
         )
 
         // Set the adapter to the GridView

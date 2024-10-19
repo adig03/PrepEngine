@@ -1,4 +1,4 @@
-package com.example.codemastery
+package com.example.codemastery.main.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.codemastery.Models.RecyclerItem
 import com.example.codemastery.Models.SubTopicGridItem
+import com.example.codemastery.R
 import com.example.codemastery.adapters.TopicRVAdapter
 import com.example.codemastery.adapters.TopicsGridAdapters
 import com.example.codemastery.databinding.FragmentSubtopicBinding
@@ -100,8 +101,8 @@ class SubtopicFragment : Fragment() {
         val allTopicListItem = arrayListOf(
             RecyclerItem("Discrete Math", "X Questions", R.drawable.discret_mathematics),
             RecyclerItem("Probability", "Y Questions", R.drawable.probablity),
-            RecyclerItem("Number Theory" , "Y Questions" ,R.drawable.number_theory),
-            RecyclerItem("Graph Theory" , "Z Questions" ,R.drawable.graph_theory),
+            RecyclerItem("Number Theory" , "Y Questions" , R.drawable.number_theory),
+            RecyclerItem("Graph Theory" , "Z Questions" , R.drawable.graph_theory),
             RecyclerItem("Modular Arithematic" , "M Questions" , R.drawable.modular_arithematic),
             RecyclerItem("Statistics", "Z Questions", R.drawable.statistics),
             RecyclerItem("Linear Algebra", "W Questions", R.drawable.linear_algebra)
@@ -113,7 +114,7 @@ class SubtopicFragment : Fragment() {
         val allTopicListItem = arrayListOf(
             RecyclerItem("SQL Basics", "X Questions", R.drawable.sql_basics),
             RecyclerItem("Normalization", "Y Questions", R.drawable.normalization),
-            RecyclerItem("Indexing" , "M Questions" ,R.drawable.indexing),
+            RecyclerItem("Indexing" , "M Questions" , R.drawable.indexing),
             RecyclerItem("ACID Properties", "Z Questions", R.drawable.acid),
             RecyclerItem("NoSQL Databases" , "W Questions" , R.drawable.nosqldatabases),
             RecyclerItem("Joins", "W Questions", R.drawable.joins)

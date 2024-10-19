@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_quiz_graph"
+    app:startDestination="@id/quizTypeFragment">
+
+    <fragment
+        android:id="@+id/quizTypeFragment"
+        android:name="com.example.codemastery.Quizes.Fragments.QuizTypeFragment"
+        android:label="fragment_quiz_type"
+        tools:layout="@layout/fragment_quiz_type" >
+        <action
+            android:id="@+id/action_quizTypeFragment_to_quizQuesFragment"
+            app:destination="@id/quizQuesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizQuesFragment"
+        android:name="com.example.codemastery.Quizes.Fragments.QuizQuesFragment"
+        android:label="fragment_quiz_ques"
+        tools:layout="@layout/fragment_quiz_ques" >
+        <action
+            android:id="@+id/action_quizQuesFragment_to_quizTypeFragment"
+            app:destination="@id/quizTypeFragment" />
+    </fragment>
+</navigation>

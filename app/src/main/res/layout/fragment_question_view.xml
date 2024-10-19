@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Questions.Fragments.QuestionViewFragment">
+
+    <Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:navigationIcon="@drawable/ic_back"
+        android:paddingTop="16dp"
+        android:title="Question 5/51"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar5"
+        app:layout_constraintTop_toTopOf="@id/toolbar5"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar5">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/star"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark this!"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar5">
+
+        <TextView
+            android:id="@+id/question_textview"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#99639F"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="'Which of the following operations can be performed in O(1) time in a binary heap?'" />
+
+        <Button
+            android:id="@+id/btn0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:backgroundTint="#A9CBE6"
+            android:gravity="center_vertical"
+            android:paddingVertical="12dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Find the maximum element" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:backgroundTint="#A9CBE6"
+            android:gravity="center_vertical"
+            android:paddingVertical="12dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Insert an element" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:backgroundTint="#A9CBE6"
+            android:gravity="center_vertical"
+            android:paddingVertical="12dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Delete an element" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:backgroundTint="#A9CBE6"
+            android:gravity="center_vertical"
+            android:paddingVertical="12dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Heapify" />
+
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="60dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="12dp"
+            android:text="Next"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

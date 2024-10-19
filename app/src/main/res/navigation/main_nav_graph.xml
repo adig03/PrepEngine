@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.codemastery.HomeFragment"
+        android:name="com.example.codemastery.main.Fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/subtopicFragment"
-        android:name="com.example.codemastery.SubtopicFragment"
+        android:name="com.example.codemastery.main.Fragments.SubtopicFragment"
         android:label="fragment_subtopic"
         tools:layout="@layout/fragment_subtopic" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.codemastery.ProfileFragment"
+        android:name="com.example.codemastery.main.Fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
