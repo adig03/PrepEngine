@@ -17,7 +17,7 @@ interface YouTubeApiService {
         @Query("key")
         apiKey :String = API_KEY,
         @Query("maxResults")
-        maxResults: Int = 2
+        maxResults: Int = 40
     ): Response<YoutubeResponse>
 
     // Search for videos (optional, based on keywords)
