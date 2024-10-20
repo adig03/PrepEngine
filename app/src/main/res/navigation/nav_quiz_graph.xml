@@ -22,5 +22,8 @@
         <action
             android:id="@+id/action_quizQuesFragment_to_quizTypeFragment"
             app:destination="@id/quizTypeFragment" />
+        <argument
+            android:name="QuizType"
+            app:argType="string" />
     </fragment>
 </navigation>

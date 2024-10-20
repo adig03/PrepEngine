@@ -1,13 +1,16 @@
 package com.example.codemastery.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import com.example.codemastery.Models.GridItem
+import com.example.codemastery.Quizes.QuizActivity
 import com.example.codemastery.R
 import org.w3c.dom.Text
 
@@ -35,6 +38,14 @@ class MyGridAdapter(context:Context , val GridItems: List<GridItem>): BaseAdapte
 
         gridText.text = item.gridtext
         gridImage.setImageResource(item.gridImage)
+
+
+        itemView.setOnClickListener { view ->
+            if (item.gridtext == "Quizes") {
+                val intent = Intent(view.context, QuizActivity::class.java)
+                view.context.startActivity(intent)
+            }
+        }
 
         return itemView
 

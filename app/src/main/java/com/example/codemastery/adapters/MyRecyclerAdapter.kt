@@ -7,9 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.codemastery.HomeFragmentDirections
+
 import com.example.codemastery.Models.RecyclerItem
 import com.example.codemastery.R
+import com.example.codemastery.main.Fragments.HomeFragmentDirections
 
 
 class MyRecyclerAdapter( val rvItems:List<RecyclerItem>)
