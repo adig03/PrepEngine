@@ -1,5 +1,6 @@
 package com.example.codemastery.intro
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,14 @@ class IntroActivity : AppCompatActivity() {
         setContentView(R.layout.activity_intro)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
              navController = navHostFragment.navController
+
+
+        val sharedPref = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean("isFirstLaunch", false)
+        editor.apply()
+
+
         }
 
 

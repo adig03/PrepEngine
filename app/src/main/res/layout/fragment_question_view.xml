@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:navigationIcon="@drawable/ic_back"
-            android:paddingTop="24dp"
             tools:title="Question 5/51"
             android:titleTextAppearance="@font/lato"
             app:layout_constraintEnd_toEndOf="parent"
