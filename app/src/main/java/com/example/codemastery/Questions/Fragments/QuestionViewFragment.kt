@@ -51,6 +51,10 @@ class QuestionViewFragment : Fragment(R.layout.fragment_question_view) {
                 updateQuestion()
                 resetButtons()
             }
+            else if(currentIndex == questionList.size -1){
+                currentIndex = currentIndex + 1
+                updateQuestion()
+            }
         }
 
         binding.prevqBtn.setOnClickListener {
@@ -64,11 +68,11 @@ class QuestionViewFragment : Fragment(R.layout.fragment_question_view) {
     }
 
     private fun updateQuestion() {
-        binding.prevqBtn.visibility = if (currentIndex == 0) View.GONE else View.VISIBLE
-        binding.nextqBtn.visibility = if (currentIndex == questionList.size - 1) View.GONE else View.VISIBLE
+        binding.prevqBtn.visibility = if (currentIndex == 1) View.GONE else View.VISIBLE
+        binding.nextqBtn.visibility = if (currentIndex == questionList.size ) View.GONE else View.VISIBLE
 
-        binding.toolbarQ.title = "Question ${currentIndex + 1}/${questionList.size}"
-        val currentQuestion = questionList[currentIndex]
+        binding.toolbarQ.title = "Question ${currentIndex}/${questionList.size}"
+        val currentQuestion = questionList[currentIndex-1]
         binding.questionqTextview.text = currentQuestion.Question
         binding.qbtn0.text = currentQuestion.Options[0]
         binding.qbtn1.text = currentQuestion.Options[1]

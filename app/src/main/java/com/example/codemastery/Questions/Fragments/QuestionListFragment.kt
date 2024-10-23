@@ -98,6 +98,7 @@ binding.toolbar4.setNavigationOnClickListener{
                 "Authentication" -> getAuthenticationQuestions()
                 "Network Security" -> getNetworkSecurityQuestions()
                 "Cryptography" -> getCryptographyQuestions()
+                "Graph Theory" -> getGraphTheoryQuestions()
 
 
 
@@ -1041,6 +1042,27 @@ binding.toolbar4.setNavigationOnClickListener{
         questionList.add(QModel(18, "What does the Physical layer deal with?", mutableListOf("Data formats", "Hardware specifications", "Data transmission", "Both B and C"), 4))
         questionList.add(QModel(19, "At which layer does the SMTP protocol operate?", mutableListOf("Application layer", "Transport layer", "Network layer", "Session layer"), 1))
         questionList.add(QModel(20, "What is the main advantage of using the OSI model?", mutableListOf("Simplicity", "Modularity", "Speed", "Compatibility"), 2))
+        questionList.add(QModel(21, "How many layers are there in the OSI model?", mutableListOf("5", "6", "7", "8"), 3))
+        questionList.add(QModel(22, "Which layer of the OSI model is responsible for end-to-end communication?", mutableListOf("Transport layer", "Network layer", "Session layer", "Application layer"), 1))
+        questionList.add(QModel(23, "What is the primary function of the Data Link layer?", mutableListOf("Routing packets", "Framing and error detection", "Data encryption", "Session management"), 2))
+        questionList.add(QModel(24, "Which layer of the OSI model deals with IP addressing?", mutableListOf("Network layer", "Transport layer", "Data Link layer", "Application layer"), 1))
+        questionList.add(QModel(25, "Which layer is responsible for establishing, managing, and terminating sessions?", mutableListOf("Transport layer", "Network layer", "Session layer", "Application layer"), 3))
+        questionList.add(QModel(26, "What is the purpose of the Physical layer?", mutableListOf("Data encryption", "Signal transmission over physical media", "Routing and switching", "Error correction"), 2))
+        questionList.add(QModel(27, "At which layer of the OSI model does TCP operate?", mutableListOf("Application layer", "Transport layer", "Network layer", "Data Link layer"), 2))
+        questionList.add(QModel(28, "What type of addressing is used at the Data Link layer?", mutableListOf("IP addressing", "MAC addressing", "Port addressing", "None of the above"), 2))
+        questionList.add(QModel(29, "Which layer provides services for data compression and encryption?", mutableListOf("Application layer", "Presentation layer", "Session layer", "Transport layer"), 2))
+        questionList.add(QModel(30, "What is the main responsibility of the Application layer?", mutableListOf("Data formatting", "User interface and application services", "Session management", "Routing packets"), 2))
+        questionList.add(QModel(31, "Which OSI layer is responsible for flow control and error recovery?", mutableListOf("Transport layer", "Network layer", "Data Link layer", "Physical layer"), 1))
+        questionList.add(QModel(32, "What is the function of the Network layer?", mutableListOf("Data delivery between hosts", "Routing and forwarding packets", "Error detection", "None of the above"), 2))
+        questionList.add(QModel(33, "Which layer is concerned with the syntax and semantics of the information exchanged?", mutableListOf("Data Link layer", "Session layer", "Presentation layer", "Transport layer"), 3))
+        questionList.add(QModel(34, "Which layer does the Internet Protocol (IP) operate at?", mutableListOf("Transport layer", "Application layer", "Network layer", "Data Link layer"), 3))
+        questionList.add(QModel(35, "What is the main function of the Session layer?", mutableListOf("Data encryption", "Maintaining sessions and managing connections", "Routing and forwarding", "Error detection"), 2))
+        questionList.add(QModel(36, "What kind of protocol is HTTP?", mutableListOf("Transport layer protocol", "Network layer protocol", "Application layer protocol", "Data Link layer protocol"), 3))
+        questionList.add(QModel(37, "Which OSI layer is responsible for segmenting data?", mutableListOf("Application layer", "Transport layer", "Network layer", "Data Link layer"), 2))
+        questionList.add(QModel(38, "What type of communication does the OSI model's Transport layer facilitate?", mutableListOf("Unicast only", "Multicast only", "Broadcast only", "All types of communication"), 4))
+        questionList.add(QModel(39, "Which protocol operates at the Transport layer?", mutableListOf("UDP", "IP", "Ethernet", "None of the above"), 1))
+        questionList.add(QModel(40, "What is the main role of the Data Link layer in relation to the Physical layer?", mutableListOf("Data routing", "Error correction and framing", "Data encryption", "None of the above"), 2))
+
 
         setUpRecyclerView(questionList)
     }
@@ -1125,26 +1147,6 @@ binding.toolbar4.setNavigationOnClickListener{
     private fun getNetworkLayersQuestions() {
         val questionList = mutableListOf<QModel>()
 
-        questionList.add(QModel(1, "How many layers are there in the OSI model?", mutableListOf("5", "6", "7", "8"), 3))
-        questionList.add(QModel(2, "Which layer of the OSI model is responsible for end-to-end communication?", mutableListOf("Transport layer", "Network layer", "Session layer", "Application layer"), 1))
-        questionList.add(QModel(3, "What is the primary function of the Data Link layer?", mutableListOf("Routing packets", "Framing and error detection", "Data encryption", "Session management"), 2))
-        questionList.add(QModel(4, "Which layer of the OSI model deals with IP addressing?", mutableListOf("Network layer", "Transport layer", "Data Link layer", "Application layer"), 1))
-        questionList.add(QModel(5, "Which layer is responsible for establishing, managing, and terminating sessions?", mutableListOf("Transport layer", "Network layer", "Session layer", "Application layer"), 3))
-        questionList.add(QModel(6, "What is the purpose of the Physical layer?", mutableListOf("Data encryption", "Signal transmission over physical media", "Routing and switching", "Error correction"), 2))
-        questionList.add(QModel(7, "At which layer of the OSI model does TCP operate?", mutableListOf("Application layer", "Transport layer", "Network layer", "Data Link layer"), 2))
-        questionList.add(QModel(8, "What type of addressing is used at the Data Link layer?", mutableListOf("IP addressing", "MAC addressing", "Port addressing", "None of the above"), 2))
-        questionList.add(QModel(9, "Which layer provides services for data compression and encryption?", mutableListOf("Application layer", "Presentation layer", "Session layer", "Transport layer"), 2))
-        questionList.add(QModel(10, "What is the main responsibility of the Application layer?", mutableListOf("Data formatting", "User interface and application services", "Session management", "Routing packets"), 2))
-        questionList.add(QModel(11, "Which OSI layer is responsible for flow control and error recovery?", mutableListOf("Transport layer", "Network layer", "Data Link layer", "Physical layer"), 1))
-        questionList.add(QModel(12, "What is the function of the Network layer?", mutableListOf("Data delivery between hosts", "Routing and forwarding packets", "Error detection", "None of the above"), 2))
-        questionList.add(QModel(13, "Which layer is concerned with the syntax and semantics of the information exchanged?", mutableListOf("Data Link layer", "Session layer", "Presentation layer", "Transport layer"), 3))
-        questionList.add(QModel(14, "Which layer does the Internet Protocol (IP) operate at?", mutableListOf("Transport layer", "Application layer", "Network layer", "Data Link layer"), 3))
-        questionList.add(QModel(15, "What is the main function of the Session layer?", mutableListOf("Data encryption", "Maintaining sessions and managing connections", "Routing and forwarding", "Error detection"), 2))
-        questionList.add(QModel(16, "What kind of protocol is HTTP?", mutableListOf("Transport layer protocol", "Network layer protocol", "Application layer protocol", "Data Link layer protocol"), 3))
-        questionList.add(QModel(17, "Which OSI layer is responsible for segmenting data?", mutableListOf("Application layer", "Transport layer", "Network layer", "Data Link layer"), 2))
-        questionList.add(QModel(18, "What type of communication does the OSI model's Transport layer facilitate?", mutableListOf("Unicast only", "Multicast only", "Broadcast only", "All types of communication"), 4))
-        questionList.add(QModel(19, "Which protocol operates at the Transport layer?", mutableListOf("UDP", "IP", "Ethernet", "None of the above"), 1))
-        questionList.add(QModel(20, "What is the main role of the Data Link layer in relation to the Physical layer?", mutableListOf("Data routing", "Error correction and framing", "Data encryption", "None of the above"), 2))
 
         setUpRecyclerView(questionList)
     }

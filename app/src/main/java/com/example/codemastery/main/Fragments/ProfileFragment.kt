@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.codemastery.Models.Badge
 import com.example.codemastery.R
 import com.example.codemastery.adapters.BadgeAdapter
@@ -46,6 +47,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.toolbar.setNavigationOnClickListener{
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
         }
+        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
+        val userName = sharedPreferences.getString("username", "Guest") // "Guest" is the default value if not found
+
+
+
+
+        if (userName != null) {
+            Glide.with(requireContext()).load("https://robohash.org/${userName}?bgset=bg1").into(binding.profileImage)
+        }
+
+
 
 
         binding.LogoutButton.setOnClickListener {

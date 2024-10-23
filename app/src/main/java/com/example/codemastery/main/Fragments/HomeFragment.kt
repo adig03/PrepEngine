@@ -27,7 +27,7 @@ import com.example.codemastery.viewModels.AppViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var appViewModel: AppViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,9 +47,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mainUserName = binding.mainUserName
-        val userName = "Aditya Gupta"
 
-        animateText(mainUserName, userName)
+
+        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
+        val userName = sharedPreferences.getString("username", "Guest") // "Guest" is the default value if not found
+
+
+
+
+        if (userName != null) {
+            animateText(mainUserName, userName)
+        }
 
         displayGrid(view)
 
@@ -106,16 +114,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         cardsRecyclerView.isNestedScrollingEnabled = false
 
         val lowerGrid = arrayListOf(
-            RecyclerItem("Data Structures", "9 Topics", R.drawable.datastructures),
-            RecyclerItem("Algorithms", "8 Topics", R.drawable.algorithem),
-            RecyclerItem("OOP", "3 Topics", R.drawable.oops),
+            RecyclerItem("Data Structures", "7 Topics", R.drawable.datastructures),
+            RecyclerItem("Algorithms", "4 Topics", R.drawable.algorithem),
+            RecyclerItem("OOP", "4 Topics", R.drawable.oops),
             RecyclerItem("Operating System", "5 Topics", R.drawable.operatingsystems),
             RecyclerItem("Databases", "6 Topics", R.drawable.databases),
             RecyclerItem("Computer Networks", "5 Topics", R.drawable.computernetwork),
-            RecyclerItem("Mathematics For CS", "5 Topics", R.drawable.mathsforcs),
-            RecyclerItem("Programming Paradigms", "5 Topics", R.drawable.programmingpara),
-            RecyclerItem("Git Fundamentals", "X Topics", R.drawable.git),
-            RecyclerItem("Security Basics", "3 Topics", R.drawable.securitybasis),
+            RecyclerItem("Mathematics For CS", "7 Topics", R.drawable.mathsforcs),
+            RecyclerItem("Programming Paradigms", "4 Topics", R.drawable.programmingpara),
+            RecyclerItem("Git Fundamentals", "4 Topics", R.drawable.git),
+            RecyclerItem("Security Basics", "4 Topics", R.drawable.securitybasis),
         )
 
         val lowerGridAdapter = MyRecyclerAdapter(lowerGrid)

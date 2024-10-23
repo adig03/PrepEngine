@@ -11,9 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.codemastery.R
 import com.example.codemastery.databinding.FragmentIntroBinding
-
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -47,8 +45,6 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,7 +54,6 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         binding.loginButton.setOnClickListener {
             findNavController().navigate(R.id.action_introFragment_to_loginFragment)
         }
@@ -70,8 +65,8 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
         }
 
         binding.signInWithGoogle.setOnClickListener {
+            progressDialog.setMessage("Loading...")
             progressDialog.show()
-            progressDialog.setMessage("Loading")
             googleSignIn()
         }
     }
@@ -88,13 +83,13 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-                // Google Sign-In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign-In failed
                 Log.w("IntroFragment", "Google sign in failed", e)
                 Toast.makeText(requireContext(), "Google sign-in failed", Toast.LENGTH_SHORT).show()
+                progressDialog.dismiss() // Ensure the dialog is dismissed on failure
             }
         }
     }
@@ -102,71 +97,39 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity(), ) { task ->
-                if (task.isSuccessful){
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
                     progressDialog.dismiss()
                     val user: FirebaseUser? = auth.currentUser
                     updateUI(user)
                 } else {
-                    // If sign in fails, display a message to the user.
+                    // If sign-in fails, display a message to the user.
                     Log.w("IntroFragment", "signInWithCredential:failure", task.exception)
-                    Toast.makeText(requireContext(), "Authentication Failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Authentication Failed.", Toast.LENGTH_SHORT)
+                        .show()
+                    progressDialog.dismiss() // Ensure the dialog is dismissed on failure
                     updateUI(null)
                 }
             }
     }
-
-
-
-
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            // Navigate to the next screen or update the UI to show the user's details
-           startActivity(Intent(requireContext() , MainActivity::class.java))
+
+            val displayName = user.displayName
+val user_email = user.email
+            val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
+            val editor = sharedPreferences.edit()
+            editor.putString("username", displayName)
+            editor.putString("email" , user_email )
+            editor.apply()
+
+            Toast.makeText(requireContext(), "Welcome, $displayName!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            requireActivity().finish()
         } else {
-            // Handle sign-out case or error case
             Toast.makeText(requireContext(), "Sign-in failed", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

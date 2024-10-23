@@ -52,117 +52,117 @@ class SubtopicFragment : Fragment() {
             "Security Basics" -> displaySecurityTopics()
         }
 
-        binding.toolbar2.setNavigationOnClickListener{
+        binding.toolbar2.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_subtopicFragment_to_homeFragment)
         }
     }
 
     private fun displayAlgorithmTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Sorting Algorithms", "X Questions", R.drawable.sorting),
-            RecyclerItem("Searching Algorithms", "Y Questions", R.drawable.searching),
-            RecyclerItem("Graph Algorithms", "Z Questions", R.drawable.graph_algorithems),
-            RecyclerItem("Dynamic Programming", "W Questions", R.drawable.dp)
+            RecyclerItem("Sorting Algorithms", "20 Questions", R.drawable.sorting),
+            RecyclerItem("Searching Algorithms", "20 Questions", R.drawable.searching),
+            RecyclerItem("Graph Algorithms", "20 Questions", R.drawable.graph_algorithems),
+            RecyclerItem("Dynamic Programming", "20 Questions", R.drawable.dp)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displaySecurityTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Encryption", "X Questions", R.drawable.encryption),
-            RecyclerItem("Authentication", "Y Questions", R.drawable.authentication),
-            RecyclerItem("Network Security", "Z Questions", R.drawable.network_security),
-            RecyclerItem("Cryptography", "W Questions", R.drawable.cryptography)
+            RecyclerItem("Encryption", "20 Questions", R.drawable.encryption),
+            RecyclerItem("Authentication", "20 Questions", R.drawable.authentication),
+            RecyclerItem("Network Security", "20 Questions", R.drawable.network_security),
+            RecyclerItem("Cryptography", "20 Questions", R.drawable.cryptography)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayGitTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Git Basics", "X Questions", R.drawable.git_basics),
-            RecyclerItem("Branches", "Y Questions", R.drawable.branches),
-            RecyclerItem("Merge Conflicts", "Z Questions", R.drawable.merge_conflicts),
-            RecyclerItem("Rebasing", "W Questions", R.drawable.rebasing)
+            RecyclerItem("Git Basics", "20 Questions", R.drawable.git_basics),
+            RecyclerItem("Branches", "20 Questions", R.drawable.branches),
+            RecyclerItem("Merge Conflicts", "20 Questions", R.drawable.merge_conflicts),
+            RecyclerItem("Rebasing", "20 Questions", R.drawable.rebasing)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayParadigmsTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Functional Programming", "X Questions", R.drawable.functional_programming),
-            RecyclerItem("Object-Oriented Programming", "Y Questions", R.drawable.oop),
-            RecyclerItem("Imperative vs Declarative", "Z Questions", R.drawable.imperative),
-            RecyclerItem("Event-driven Programming", "W Questions", R.drawable.event_driven)
+            RecyclerItem("Functional Programming", "20 Questions", R.drawable.functional_programming),
+            RecyclerItem("Object-Oriented Programming", "20 Questions", R.drawable.oop),
+            RecyclerItem("Imperative vs Declarative", "20 Questions", R.drawable.imperative),
+            RecyclerItem("Event-driven Programming", "20 Questions", R.drawable.event_driven)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayMathTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Discrete Math", "X Questions", R.drawable.discret_mathematics),
-            RecyclerItem("Probability", "Y Questions", R.drawable.probablity),
-            RecyclerItem("Number Theory" , "Y Questions" , R.drawable.number_theory),
-            RecyclerItem("Graph Theory" , "Z Questions" , R.drawable.graph_theory),
-            RecyclerItem("Modular Arithematic" , "M Questions" , R.drawable.modular_arithematic),
-            RecyclerItem("Statistics", "Z Questions", R.drawable.statistics),
-            RecyclerItem("Linear Algebra", "W Questions", R.drawable.linear_algebra)
+            RecyclerItem("Discrete Math", "20 Questions", R.drawable.discret_mathematics),
+            RecyclerItem("Probability", "20 Questions", R.drawable.probablity),
+            RecyclerItem("Number Theory", "20 Questions", R.drawable.number_theory),
+            RecyclerItem("Graph Theory", "20 Questions", R.drawable.graph_theory),
+            RecyclerItem("Modular Arithmetic", "20 Questions", R.drawable.modular_arithematic),
+            RecyclerItem("Statistics", "20 Questions", R.drawable.statistics),
+            RecyclerItem("Linear Algebra", "20 Questions", R.drawable.linear_algebra)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayDatabasesTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("SQL Basics", "X Questions", R.drawable.sql_basics),
-            RecyclerItem("Normalization", "Y Questions", R.drawable.normalization),
-            RecyclerItem("Indexing" , "M Questions" , R.drawable.indexing),
-            RecyclerItem("ACID Properties", "Z Questions", R.drawable.acid),
-            RecyclerItem("NoSQL Databases" , "W Questions" , R.drawable.nosqldatabases),
-            RecyclerItem("Joins", "W Questions", R.drawable.joins)
+            RecyclerItem("SQL Basics", "20 Questions", R.drawable.sql_basics),
+            RecyclerItem("Normalization", "20 Questions", R.drawable.normalization),
+            RecyclerItem("Indexing", "20 Questions", R.drawable.indexing),
+            RecyclerItem("ACID Properties", "20 Questions", R.drawable.acid),
+            RecyclerItem("NoSQL Databases", "20 Questions", R.drawable.nosqldatabases),
+            RecyclerItem("Joins", "20 Questions", R.drawable.joins)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayOperatingSystemTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Process Management", "X Questions", R.drawable.process_management),
-            RecyclerItem("Concurrency and Synchronisation", "X Questions", R.drawable.concurrency),
-            RecyclerItem("Memory Management", "Y Questions", R.drawable.memory_management),
-            RecyclerItem("File Systems", "Z Questions", R.drawable.file_system),
-            RecyclerItem("CPU Scheduling Algorithms", "W Questions", R.drawable.cpu_scheduling)
+            RecyclerItem("Process Management", "20 Questions", R.drawable.process_management),
+            RecyclerItem("Concurrency and Synchronisation", "20 Questions", R.drawable.concurrency),
+            RecyclerItem("Memory Management", "20 Questions", R.drawable.memory_management),
+            RecyclerItem("File Systems", "20 Questions", R.drawable.file_system),
+            RecyclerItem("CPU Scheduling Algorithms", "20 Questions", R.drawable.cpu_scheduling)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayOOPTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Classes and Objects", "X Questions", R.drawable.classes_objects),
-            RecyclerItem("Inheritance", "Y Questions", R.drawable.inheritance),
-            RecyclerItem("Polymorphism", "Z Questions", R.drawable.polumorphism),
-            RecyclerItem("Abstraction", "W Questions", R.drawable.abstraction)
+            RecyclerItem("Classes and Objects", "20 Questions", R.drawable.classes_objects),
+            RecyclerItem("Inheritance", "20 Questions", R.drawable.inheritance),
+            RecyclerItem("Polymorphism", "20 Questions", R.drawable.polumorphism),
+            RecyclerItem("Abstraction", "20 Questions", R.drawable.abstraction)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayDataStructuresTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("Arrays", "X Questions", R.drawable.array),
-            RecyclerItem("Linked Lists", "Y Questions", R.drawable.linklist),
-            RecyclerItem("Stacks", "Z Questions", R.drawable.stacks),
-            RecyclerItem("Hash Table", "W Questions", R.drawable.hashtable),
-            RecyclerItem("Heaps", "Q Questions", R.drawable.heap),
-            RecyclerItem("Trees", "S Questions", R.drawable.binarytree),
-            RecyclerItem("Graphs", "E Questions", R.drawable.graph)
+            RecyclerItem("Arrays", "41 Questions", R.drawable.array),
+            RecyclerItem("Linked Lists", "20 Questions", R.drawable.linklist),
+            RecyclerItem("Stacks", "20 Questions", R.drawable.stacks),
+            RecyclerItem("Hash Table", "20 Questions", R.drawable.hashtable),
+            RecyclerItem("Heaps", "20 Questions", R.drawable.heap),
+            RecyclerItem("Trees", "20 Questions", R.drawable.binarytree),
+            RecyclerItem("Graphs", "20 Questions", R.drawable.graph)
         )
         setupRecyclerView(allTopicListItem)
     }
 
     private fun displayComputerNetworkTopics() {
         val allTopicListItem = arrayListOf(
-            RecyclerItem("OSI Model", "X Questions", R.drawable.osi_model),
-            RecyclerItem("TCP/IP Model", "Y Questions", R.drawable.tcp_ip),
-            RecyclerItem("Routing Algorithms", "Z Questions", R.drawable.routing),
-            RecyclerItem("IP Addressing", "W Questions", R.drawable.ip_addressing),
-            RecyclerItem("Network Layers", "Q Questions", R.drawable.network_layers)
+            RecyclerItem("OSI Model", "20 Questions", R.drawable.osi_model),
+            RecyclerItem("TCP/IP Model", "20 Questions", R.drawable.tcp_ip),
+            RecyclerItem("Routing Algorithms", "20 Questions", R.drawable.routing),
+            RecyclerItem("IP Addressing", "20 Questions", R.drawable.ip_addressing),
+//            RecyclerItem("Network Layers", "20 Questions", R.drawable.network_layers)
         )
         setupRecyclerView(allTopicListItem)
     }
@@ -181,7 +181,7 @@ class SubtopicFragment : Fragment() {
             SubTopicGridItem(R.drawable.flashcard, "Flash Cards")
         )
 
-        gridAdapter = TopicsGridAdapters(requireContext(), allGridItems , args.subjectTitle)
+        gridAdapter = TopicsGridAdapters(requireContext(), allGridItems, args.subjectTitle)
         binding.topicGrid.adapter = gridAdapter
     }
 }
