@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_questionListFragment_to_questionViewFragment"
             app:destination="@id/questionViewFragment" />
+        <argument
+            android:name="subtopic"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/questionViewFragment"

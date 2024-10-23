@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.codemastery.Models.SubTopicGridItem
 import com.example.codemastery.R
 import com.example.codemastery.VideoLecture.VideoLectureActivity
+import com.example.codemastery.WorkinProgressActivity
 
 class TopicsGridAdapters(
     private val context: Context,  // Context reference
@@ -43,6 +44,10 @@ class TopicsGridAdapters(
                     putExtra("subject", subject)
                 }
                 context.startActivity(intent)
+            }
+            else{
+                val intent = Intent(context , WorkinProgressActivity::class.java)
+                it.context.startActivity(intent)
             }
         }
 

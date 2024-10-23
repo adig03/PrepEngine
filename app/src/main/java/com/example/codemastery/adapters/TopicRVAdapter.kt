@@ -1,12 +1,15 @@
 package com.example.codemastery.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codemastery.Models.RecyclerItem
+import com.example.codemastery.Questions.QuestionActivity
 import com.example.codemastery.R
 
 class TopicRVAdapter(val rvItems: List<RecyclerItem>) : RecyclerView.Adapter<TopicRVAdapter.MyViewHolder>() {
@@ -28,6 +31,14 @@ class TopicRVAdapter(val rvItems: List<RecyclerItem>) : RecyclerView.Adapter<Top
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+
+
+        holder.itemView.setOnClickListener {
+            val i =  Intent(it.context , QuestionActivity::class.java)
+            i.putExtra("subtopic" , rvItems[position].topicName)
+            it.context.startActivity(i)
+        }
         val item = rvItems[position]
         holder.itemImage.setImageResource(item.topicImage)
         holder.itemDesc.text = item.topicDesc

@@ -2,7 +2,28 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<color name = "light_green">#97D558</color>
-    <color name = "light_red">#EF9292</color>
-<color name = "default_button_color">#A9CBE6</color>
+    <color name="light_green">#97D558</color>
+    <color name="light_red">#EF9292</color>
+    <color name="default_button_color">#A9CBE6</color>
+    <color name="light_grey">#747676</color>
+    <color name="light_blue">#69CBF8</color>
+
+    <color name="my_light_primary">#FF6200EE</color> <!-- Primary color -->
+    <color name="my_light_on_primary">#FFFFFF</color> <!-- Color for text/icons on primary color -->
+    <color name="my_light_background">#FFFFFF</color> <!-- Background color -->
+    <color name="my_light_body">#000000</color> <!-- Body text color -->
+    <color name="my_light_headline">#FF0000</color> <!-- Headline text color -->
+    <color name="my_light_button_background">#A9CBE6</color> <!-- Button background color -->
+    <color name="my_light_button_text">#FFFFFF</color> <!-- Button text color -->
+
+    <color name="my_light_secondary">#03DAC5</color> <!-- Secondary color -->
+    <color name="my_light_on_secondary">#000000</color> <!-- Color for text/icons on secondary color -->
+
+    <!-- Additional colors based on theme references -->
+    <color name="my_light_surface">#FFFFFF</color> <!-- Surface color -->
+    <color name="my_light_on_surface">#000000</color> <!-- Color for text/icons on surface -->
+    <color name="my_light_error">#B00020</color> <!-- Error color -->
+    <color name="my_light_on_error">#FFFFFF</color> <!-- Color for text/icons on error -->
+    <color name="my_light_primary_variant">#3700B3</color> <!-- Darker shade of primary color -->
+    <color name="my_light_secondary_variant">#018786</color> <!-- Darker shade of secondary color -->
 </resources>

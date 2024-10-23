@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Quizzy"
+                android:fontFamily="@font/lato"
                 android:gravity="center"
                 android:textSize="34sp"
                 android:letterSpacing="0.1"
@@ -36,6 +37,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
                 android:text="Take quiz to enhance your knowledge"
                 android:gravity="center"
                 android:textSize="18sp"
@@ -49,7 +51,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All items"
+            android:text="All Quizes"
+            android:fontFamily="@font/lato"
             android:layout_marginTop="16dp"
             android:layout_marginStart="4dp"
             android:textSize="20sp"

@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.codemastery.Models.GridItem
 import com.example.codemastery.Quizes.QuizActivity
 import com.example.codemastery.R
+import com.example.codemastery.WorkinProgressActivity
 import org.w3c.dom.Text
 
 class MyGridAdapter(context:Context , val GridItems: List<GridItem>): BaseAdapter() {
@@ -43,6 +44,10 @@ class MyGridAdapter(context:Context , val GridItems: List<GridItem>): BaseAdapte
         itemView.setOnClickListener { view ->
             if (item.gridtext == "Quizes") {
                 val intent = Intent(view.context, QuizActivity::class.java)
+                view.context.startActivity(intent)
+            }
+            else{
+                val intent = Intent(view.context , WorkinProgressActivity::class.java)
                 view.context.startActivity(intent)
             }
         }

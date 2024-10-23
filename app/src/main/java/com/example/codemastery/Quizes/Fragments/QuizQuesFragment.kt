@@ -17,6 +17,7 @@ import com.example.codemastery.Models.QuestionModel
 import com.example.codemastery.R
 import com.example.codemastery.databinding.FragmentQuizQuesBinding
 import com.example.codemastery.databinding.ScoreDialogBinding
+
 import com.example.codemastery.main.MainActivity
 
 class QuizQuesFragment : Fragment(R.layout.fragment_quiz_ques) {
@@ -71,7 +72,7 @@ class QuizQuesFragment : Fragment(R.layout.fragment_quiz_ques) {
 
     private fun exitQuiz() {
         val builder = androidx.appcompat.app.AlertDialog.Builder(requireContext())
-        builder.setTitle("Confirm Navigation")
+        builder.setTitle("Seriously?")
         builder.setMessage("Are you sure you want to go back? Your current progress might be lost?")
         builder.setPositiveButton("Yes") { dialog, _ ->
             finishQuiz()

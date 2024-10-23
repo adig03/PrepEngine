@@ -128,7 +128,7 @@ class SubtopicFragment : Fragment() {
             RecyclerItem("Concurrency and Synchronisation", "X Questions", R.drawable.concurrency),
             RecyclerItem("Memory Management", "Y Questions", R.drawable.memory_management),
             RecyclerItem("File Systems", "Z Questions", R.drawable.file_system),
-            RecyclerItem("CPU Scheduling Algorithems", "W Questions", R.drawable.cpu_scheduling)
+            RecyclerItem("CPU Scheduling Algorithms", "W Questions", R.drawable.cpu_scheduling)
         )
         setupRecyclerView(allTopicListItem)
     }

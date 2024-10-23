@@ -1,145 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Questions.Fragments.QuestionListFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Toolbar
-        android:id="@+id/toolbar4"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:navigationIcon="@drawable/ic_back"
-        android:title="Questions"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@drawable/appbackground"
+        tools:context=".Questions.Fragments.QuestionListFragment">
 
-
-
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/attemptedQs_progress_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:layout_marginHorizontal="16dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4">
-
-        <LinearLayout
+        <Toolbar
+            android:id="@+id/toolbar4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:paddingTop="16dp"
+            android:titleTextAppearance="@font/lato"
+            android:navigationIcon="@drawable/ic_back"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/topic_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Topic Name"
+            android:fontFamily="@font/lato"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/attempted_progress_indicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    app:indicatorSize="90dp"
-                    app:trackColor="#A9CBE6"
-                    app:trackCornerRadius="20dp"
-                    app:trackThickness="8dp"
-                    tools:progress="60" />
+        <TextView
+            android:id="@+id/number_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="number_questions"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/light_grey"
+            app:layout_constraintTop_toBottomOf="@+id/topic_name"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" />
 
-                <TextView
-                    android:id="@+id/attempted_progress_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:text="50%" />
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:text="25 Questions Attempted out of 50 Questions"
-
-                android:textAlignment="center" />
-        </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/CorrectedQs_progress_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/attemptedQs_progress_indicator">
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/attemptedQs_progress_indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:shadowColor="@color/black"
+            android:visibility="gone"
+            app:cardElevation="4dp"
+            android:padding="16dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number_questions">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/corrected_progress_indicator"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    app:indicatorSize="90dp"
-                    app:trackColor="#A9CBE6"
-                    app:trackCornerRadius="20dp"
-                    app:trackThickness="8dp"
-                    tools:progress="60" />
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/attempted_progress_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        app:indicatorSize="90dp"
+                        app:trackColor="#A9CBE6"
+                        app:trackCornerRadius="20dp"
+                        app:trackThickness="8dp"
+                        tools:progress="60" />
+
+                    <TextView
+                        android:id="@+id/attempted_progress_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="50%" />
+                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/corrected_progress_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:text="80%" />
-            </RelativeLayout>
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:text="25 Questions Attempted out of 50 Questions"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:layout_width="160dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CorrectedQs_progress_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="16dp"
+            android:shadowColor="@color/black"
+            app:cardElevation="4dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/attemptedQs_progress_indicator">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="16dp"
-                android:text="You got 20 Questions correct out of 25 Questions"
+                android:orientation="horizontal">
 
-                android:textAlignment="center" />
-        </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/corrected_progress_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        app:indicatorSize="90dp"
+                        app:trackColor="#A9CBE6"
+                        app:trackCornerRadius="20dp"
+                        app:trackThickness="8dp"
+                        tools:progress="60" />
 
-    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/corrected_progress_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="80%" />
+                </RelativeLayout>
 
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:text="You got 20 Questions correct out of 25 Questions"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="16dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/CorrectedQs_progress_indicator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/question_list"
+            android:layout_margin="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/CorrectedQs_progress_indicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

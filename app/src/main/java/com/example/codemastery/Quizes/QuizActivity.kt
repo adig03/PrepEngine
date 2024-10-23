@@ -17,7 +17,8 @@ class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_quiz)
+        binding = ActivityQuizBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
 

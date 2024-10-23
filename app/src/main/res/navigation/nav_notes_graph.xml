@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_notes_graph"
+    app:startDestination="@id/notesDisFragment">
+
+    <fragment
+        android:id="@+id/notesDisFragment"
+        android:name="com.example.codemastery.NotesDisFragment"
+        android:label="fragment_notes_dis"
+        tools:layout="@layout/fragment_notes_dis" >
+        <action
+            android:id="@+id/action_notesDisFragment_to_notesEditFragment"
+            app:destination="@id/notesEditFragment" />
+        <action
+            android:id="@+id/action_notesDisFragment_to_notesAddFragment"
+            app:destination="@id/notesAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesAddFragment"
+        android:name="com.example.codemastery.NotesAddFragment"
+        android:label="fragment_notes_add"
+        tools:layout="@layout/fragment_notes_add" >
+        <action
+            android:id="@+id/action_notesAddFragment_to_notesDisFragment"
+            app:destination="@id/notesDisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesEditFragment"
+        android:name="com.example.codemastery.NotesEditFragment"
+        android:label="fragment_notes_edit"
+        tools:layout="@layout/fragment_notes_edit" >
+        <action
+            android:id="@+id/action_notesEditFragment_to_notesDisFragment"
+            app:destination="@id/notesDisFragment" />
+    </fragment>
+</navigation>

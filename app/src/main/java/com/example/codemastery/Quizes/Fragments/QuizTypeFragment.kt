@@ -73,7 +73,7 @@ class QuizTypeFragment : Fragment(R.layout.fragment_quiz_type) {
 
 
 
-        quizModelList.add(QuizModel("Random ", "20 random Questions for CS", "20", listQuestionModel))
+        quizModelList.add(QuizModel("Random ", "20 random Questions for CS", "1", listQuestionModel))
         setupRecyclerView()
     }
 
