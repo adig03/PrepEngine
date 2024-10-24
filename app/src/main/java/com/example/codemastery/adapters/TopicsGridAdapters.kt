@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import com.example.codemastery.Models.SubTopicGridItem
+import com.example.codemastery.PdfActivity
 import com.example.codemastery.R
 import com.example.codemastery.VideoLecture.VideoLectureActivity
 import com.example.codemastery.WorkinProgressActivity
@@ -44,6 +46,12 @@ class TopicsGridAdapters(
                     putExtra("subject", subject)
                 }
                 context.startActivity(intent)
+            }
+            else if(currentItem.Title == "Flash Cards"){
+                val i = Intent(context , PdfActivity::class.java).apply {
+                    putExtra("subject" , subject )
+                }
+                it.context.startActivity(i)
             }
             else{
                 val intent = Intent(context , WorkinProgressActivity::class.java)

@@ -175,10 +175,9 @@ class SubtopicFragment : Fragment() {
 
     private fun displayGrid() {
         val allGridItems = arrayListOf(
-            SubTopicGridItem(R.drawable.stickynotes, "Notes"),
-            SubTopicGridItem(R.drawable.testpapers, "Test Papers"),
-            SubTopicGridItem(R.drawable.videolectures, "Video Lectures"),
-            SubTopicGridItem(R.drawable.flashcard, "Flash Cards")
+            SubTopicGridItem(R.drawable.flashcard, "Flash Cards"),
+            SubTopicGridItem(R.drawable.videolectures, "Video Lectures")
+
         )
 
         gridAdapter = TopicsGridAdapters(requireContext(), allGridItems, args.subjectTitle)
