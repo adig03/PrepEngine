@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import com.example.codemastery.Models.SubTopicGridItem
-import com.example.codemastery.PdfActivity
+import com.example.codemastery.pdf.PdfActivity
 import com.example.codemastery.R
 import com.example.codemastery.VideoLecture.VideoLectureActivity
 import com.example.codemastery.WorkinProgressActivity

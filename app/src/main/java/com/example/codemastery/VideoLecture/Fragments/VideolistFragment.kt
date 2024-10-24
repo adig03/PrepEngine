@@ -107,18 +107,18 @@ class VideolistFragment : Fragment(R.layout.fragment_videolist) {
         viewModel.videoList.observe(viewLifecycleOwner, Observer { resource ->
             when (resource) {
                 is Resource.success -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.loadingVideoList.visibility = View.GONE
                     resource.data?.let { videos ->
                         videoLectureAdapter.differ.submitList(videos)
                     }
                 }
                 is Resource.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    binding.loadingVideoList.visibility = View.GONE
                     // Show error message to the user
                     Toast.makeText(requireContext(), resource.message ?: "An error occurred", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Loading -> {
-                    binding.progressBar.visibility = View.VISIBLE
+                    binding.loadingVideoList.visibility = View.VISIBLE
                 }
             }
         })

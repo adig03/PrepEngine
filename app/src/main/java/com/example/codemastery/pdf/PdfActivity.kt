@@ -1,4 +1,4 @@
-package com.example.codemastery
+package com.example.codemastery.pdf
 
 import android.net.Uri
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.codemastery.R
 import com.example.codemastery.adapters.PdfAdapter
 import com.example.codemastery.databinding.ActivityPdfBinding
-import com.example.codemastery.pdf.PdfRepository
 import com.example.codemastery.viewModels.PdfViewModel
 import com.example.codemastery.viewModels.PdfViewModelFactory
 
@@ -50,7 +50,7 @@ class PdfActivity : AppCompatActivity() {
         }
 
         // Show progress bar when fetching PDFs
-        binding.progressBar.visibility = View.VISIBLE // Show ProgressBar
+        binding.loadingPdf.visibility = View.VISIBLE // Show ProgressBar
 
         subject?.let {
             pdfViewModel.getPdfs(it)
@@ -67,7 +67,7 @@ class PdfActivity : AppCompatActivity() {
 
         pdfViewModel.pdfUrls.observe(this) { urls ->
             // Hide ProgressBar once data is fetched
-            binding.progressBar.visibility = View.GONE // Hide ProgressBar
+            binding.loadingPdf.visibility = View.GONE // Hide ProgressBar
 
             binding.rvPdfs.apply {
                 pdfAdapter = PdfAdapter(this.context, listOfNames, urls)

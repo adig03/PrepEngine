@@ -5,7 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.codemastery.PdfDisplayActivity
+import com.example.codemastery.pdf.PdfDisplayActivity
 import com.example.codemastery.databinding.PdfItemBinding
 
 class PdfAdapter(private val context: Context, private var pdfNames: List<String>, private var pdfUrls: List<String>) : RecyclerView.Adapter<PdfAdapter.PdfViewHolder>() {

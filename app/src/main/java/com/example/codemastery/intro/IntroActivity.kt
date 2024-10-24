@@ -20,10 +20,10 @@ class IntroActivity : AppCompatActivity() {
              navController = navHostFragment.navController
 
 
-        val sharedPref = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.putBoolean("isFirstLaunch", false)
-        editor.apply()
+//        val sharedPref = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
+//        val editor = sharedPref.edit()
+//        editor.putBoolean("isFirstLaunch", false)
+//        editor.apply()
 
 
         }

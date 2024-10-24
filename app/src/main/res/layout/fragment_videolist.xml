@@ -30,17 +30,20 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loadingVideoList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:visibility="gone"
-            android:indeterminate="true"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_loop="true"
+            app:lottie_renderMode="hardware" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

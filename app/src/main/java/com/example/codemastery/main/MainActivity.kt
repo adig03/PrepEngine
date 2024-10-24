@@ -33,19 +33,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Check if this is the first launch
-        val sharedPref = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
-        val isFirstLaunch = sharedPref.getBoolean("isFirstLaunch", true)
+//        val sharedPref = getSharedPreferences("appPreferences", Context.MODE_PRIVATE)
+//        val isFirstLaunch = sharedPref.getBoolean("isFirstLaunch", true)
 
-        if (isFirstLaunch) {
-            // If it's the first launch, open IntroActivity
-            val intent = Intent(this, IntroActivity::class.java)
-            startActivity(intent)
-            finish()  // Close MainActivity so user can't return to it
-        } else {
-            // If not the first launch, setup navigation
-            val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            navController = navHostFragment.navController
-        }
+//        if (isFirstLaunch) {
+//            // If it's the first launch, open IntroActivity
+//            val intent = Intent(this, IntroActivity::class.java)
+//            startActivity(intent)
+//            finish()  // Close MainActivity so user can't return to it
+//        } else {
+//            // If not the first launch, setup navigation
+//            val navHostFragment = supportFragmentManager
+//                .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+//            navController = navHostFragment.navController
+//        }
     }
 }

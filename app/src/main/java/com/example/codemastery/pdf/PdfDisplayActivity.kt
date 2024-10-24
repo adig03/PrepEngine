@@ -1,13 +1,11 @@
-package com.example.codemastery
+package com.example.codemastery.pdf
 
 import android.graphics.pdf.PdfRenderer
 import android.os.Bundle
 import android.os.ParcelFileDescriptor
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import com.example.codemastery.databinding.ActivityPdfDisplayBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -49,11 +47,11 @@ class PdfDisplayActivity : AppCompatActivity() {
     }
 
     private fun downloadAndDisplayPdf(pdfUrl: String) {
-        binding.pdfProgress.visibility = ProgressBar.VISIBLE // Show the progress bar
+        binding.loadingPdfDisplay.visibility = ProgressBar.VISIBLE // Show the progress bar
         CoroutineScope(Dispatchers.IO).launch {
             val file = downloadPdfFile(pdfUrl)
             withContext(Dispatchers.Main) {
-                binding.pdfProgress.visibility = ProgressBar.GONE // Hide the progress bar
+                binding.loadingPdfDisplay.visibility = ProgressBar.GONE // Hide the progress bar
                 if (file != null) {
                     displayPdf(file)
                 } else {
@@ -110,6 +108,25 @@ class PdfDisplayActivity : AppCompatActivity() {
             page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
             binding.pdfImageView.setImageBitmap(bitmap)
             page.close()
+
+            // Update the visibility of the buttons based on the page index
+            updateButtonVisibility()
+        }
+    }
+
+    private fun updateButtonVisibility() {
+        // Hide the "Previous" button on the first page
+        binding.prevPageBtn.visibility = if (currentPageIndex == 0) {
+            android.view.View.INVISIBLE
+        } else {
+            android.view.View.VISIBLE
+        }
+
+        // Hide the "Next" button on the last page
+        binding.nextPageBtn.visibility = if (currentPageIndex == pdfRenderer.pageCount - 1) {
+            android.view.View.INVISIBLE
+        } else {
+            android.view.View.VISIBLE
         }
     }
 
