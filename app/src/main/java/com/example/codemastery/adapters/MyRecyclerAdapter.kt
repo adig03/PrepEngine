@@ -1,56 +1,71 @@
 package com.example.codemastery.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-
-import com.example.codemastery.Models.RecyclerItem
+import com.bumptech.glide.Glide
+import com.example.codemastery.Models.SubjectsResponseItem
 import com.example.codemastery.R
-import com.example.codemastery.main.Fragments.HomeFragmentDirections
+import com.example.codemastery.VideoLecture.Fragments.VideolistFragmentDirections
+import com.example.codemastery.databinding.TopiclistRvBinding
+
+class MyRecyclerAdapter : RecyclerView.Adapter<MyRecyclerAdapter.SubjectViewHolder>() {
+
+    // ViewHolder for binding subject data to the UI
+    inner class SubjectViewHolder(private val binding: TopiclistRvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(subject: SubjectsResponseItem) {
+            binding.apply {
+                // Bind subject name to the title text view
+                cardTitleText.text = subject.name
+
+                // Load subject image using Glide
+                Glide.with(itemView.context)
+                    .load(subject.image)
+                    // Placeholder while loading
+                    .into(cardImageView)
 
 
-class MyRecyclerAdapter( val rvItems:List<RecyclerItem>)
-    :RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder>(){
+                itemView.setOnClickListener {
+                    val action = VideolistFragmentDirections
+                        .actionVideolistFragmentToVideoWebviewFragment(subject._id)
+                    it.findNavController().navigate(action)
+                }
+            }
+        }
+    }
 
+    // DiffUtil for optimized list updates
+    private val differCallback = object : DiffUtil.ItemCallback<SubjectsResponseItem>() {
+        override fun areItemsTheSame(oldItem: SubjectsResponseItem, newItem: SubjectsResponseItem): Boolean {
+            return oldItem._id == newItem._id // Compare by unique ID
+        }
 
-       class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-            val itemTitle = itemView.findViewById<TextView>(R.id.cardTitleText)
-           val itemdesc = itemView.findViewById<TextView>(R.id.cardDesc)
-           val itemImage = itemView.findViewById<ImageView>(R.id.cardImageView)
-       }
+        override fun areContentsTheSame(oldItem: SubjectsResponseItem, newItem: SubjectsResponseItem): Boolean {
+            return oldItem == newItem // Compare all fields
+        }
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view =LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_view_recycler, parent, false)
-        return MyViewHolder(view)
+    val differ = AsyncListDiffer(this, differCallback)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectViewHolder {
+        val binding = TopiclistRvBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return SubjectViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: SubjectViewHolder, position: Int) {
+        val subject = differ.currentList[position]
+        holder.bind(subject)
     }
 
     override fun getItemCount(): Int {
-        return rvItems.size
+        return differ.currentList.size
     }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = rvItems[position]
-        holder.itemImage.setImageResource(item.topicImage)
-        holder.itemdesc.text = item.topicDesc
-        holder.itemTitle.text =item.topicName
-        holder.itemView.alpha = 0f
-        holder.itemView.animate().alpha(1f).setDuration(500).start()
-
-
-        holder.itemView.setOnClickListener{
-            val action = HomeFragmentDirections.actionHomeFragmentToSubtopicFragment(item.topicName)
-
-            it.findNavController().navigate(action)
-
-        }
-
-
-    }
-
-
 }

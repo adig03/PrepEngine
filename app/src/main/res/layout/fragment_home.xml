@@ -7,7 +7,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-android:background="@drawable/appbackground"
+        android:background="@drawable/appbackground"
         tools:context=".main.Fragments.HomeFragment">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -145,8 +145,21 @@ android:background="@drawable/appbackground"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:nestedScrollingEnabled="false" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
             </LinearLayout>
+
+
 
         </androidx.core.widget.NestedScrollView>
 

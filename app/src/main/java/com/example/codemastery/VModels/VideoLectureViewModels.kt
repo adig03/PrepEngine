@@ -1,4 +1,4 @@
-package com.example.codemastery.viewModels
+package com.example.codemastery.VModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,7 +25,7 @@ class VideoLectureViewModels(private val repository: VideoRepository) : ViewMode
     private fun handleVideoList(response: Response<YoutubeResponse>): Resource<List<Item>> {
         return if (response.isSuccessful) {
             response.body()?.let { result ->
-                Resource.success(result.items)
+                Resource.Success(result.items)
             } ?: Resource.Error("No data found")
         } else {
             Resource.Error("Error: ${response.message()}")

@@ -25,7 +25,7 @@ class QuizListAdapter(private val quizModelList: List<QuizModel>) :
         fun bind(model: QuizModel) {
             binding.apply {
               quizTitleText.text =model.title
-            quizTimeText.text = model.time
+            quizTimeText.text = model.time.toString()
             quizSubtitleText.text = model.subtitle// Set the quiz time text
             }
         }
@@ -51,8 +51,9 @@ class QuizListAdapter(private val quizModelList: List<QuizModel>) :
 
         holder.itemView.setOnClickListener {
 
-            QuizQuesFragment.questionModelList = quizModelList[position].QuestionList
-            QuizQuesFragment.timer = quizModelList[position].time
+          QuizQuesFragment.questionModelList = quizModelList[position].questionList
+
+            QuizQuesFragment.timer = quizModelList[position].time.toString()
             it.findNavController().navigate(R.id.action_quizTypeFragment_to_quizQuesFragment)
 
         }

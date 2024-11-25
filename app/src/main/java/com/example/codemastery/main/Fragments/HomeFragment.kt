@@ -1,6 +1,6 @@
-package com.example.codemastery.main.Fragments
+package com.example.codemastery.main.fragments
 
-
+import UserRepo
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,126 +9,147 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import android.widget.TextView
-import androidx.databinding.DataBindingUtil
+
 import androidx.fragment.app.Fragment
 
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.codemastery.Models.GridItem
-import com.example.codemastery.Models.RecyclerItem
+
+import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.example.codemastery.R
 import com.example.codemastery.adapters.MyGridAdapter
 import com.example.codemastery.adapters.MyRecyclerAdapter
 import com.example.codemastery.databinding.FragmentHomeBinding
-import com.example.codemastery.viewModels.AppViewModel
+import com.example.codemastery.Models.GridItem
 
+
+import com.example.codemastery.repositiories.MainRepository
+
+import com.example.codemastery.util.Resource
+import com.example.codemastery.VModels.AppViewModelFactory
+
+import com.example.codemastery.viewmodels.AppViewModel
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    private lateinit var binding: FragmentHomeBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var appViewModel: AppViewModel
 
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainUserName = binding.mainUserName
 
-
+        // Shared Preferences for username
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
-        val userName = sharedPreferences.getString("username", "Guest") // "Guest" is the default value if not found
+        val userName = sharedPreferences.getString("username", "Guest") // Default is "Guest"
+
+        // Initialize ViewModel
+        val factory = AppViewModelFactory(UserRepo(), MainRepository())
+        appViewModel = ViewModelProvider(this, factory)[AppViewModel::class.java]
+
+        // Animate username
+        userName?.let { animateText(binding.mainUserName, it) }
 
 
+        displayGrid()
 
+setupRecyclerView()
 
-        if (userName != null) {
-            animateText(mainUserName, userName)
-        }
+        appViewModel.fetchAllSubjects()
 
-        displayGrid(view)
-
-        displayRecyclerView()
-
-
-        binding.circularView.setOnClickListener{
+        // Circular view navigation to ProfileFragment
+        binding.circularView.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
+    }
 
+    private fun setupRecyclerView() {
+        // Assuming subjectsState is a LiveData<Resource<List<SubjectsResponseItem>>>
+        appViewModel.subjectsState.observe(viewLifecycleOwner, { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    // Show loading indicator (e.g., a ProgressBar)
+                    showLoading(true)
+                }
+                is Resource.Success -> {
+                    // Hide loading indicator and set the data to the RecyclerView
+                    showLoading(false)
+                    resource.data?.let { subjectsList ->
 
+                        val subjectAdapter = MyRecyclerAdapter()
+                        subjectAdapter.differ.submitList(subjectsList)
+                        binding.MyRecylerView.adapter = subjectAdapter
+                        binding.MyRecylerView.layoutManager = LinearLayoutManager(activity)
+                        binding.MyRecylerView.visibility = View.VISIBLE
 
-}
+                    }
+                }
+                is Resource.Error -> {
+                    // Hide loading indicator and show error message
+                    showLoading(false)
+                    resource.message?.let { errorMessage ->
+//                        showError(errorMessage)
+                    }
+                }
+            }
+        })
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        // You can show or hide the ProgressBar here
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+//    private fun showError(message: String) {
+//        // You can display the error message in a TextView or Snackbar
+//        errorTextView.text = message
+//        errorTextView.visibility = View.VISIBLE
+//    }
+
 
     private fun animateText(textView: TextView, text: String, delay: Long = 150) {
-        textView.text = "" // Clear the text initially
+        textView.text = ""
         val handler = Handler(Looper.getMainLooper())
         var charIndex = 0
-
         val runnable = object : Runnable {
             override fun run() {
                 if (charIndex < text.length) {
                     textView.text = textView.text.toString() + text[charIndex]
                     charIndex++
-                    handler.postDelayed(this, delay) // Post the next character
+                    handler.postDelayed(this, delay)
                 }
             }
         }
-
-        handler.post(runnable) // Start the animation
+        handler.post(runnable)
     }
 
-
-    private fun displayGrid(view: View) {
-        val grid: GridView = view.findViewById<GridView>(R.id.GridView)
-
-        val allGridItems = arrayListOf(
-            GridItem("Notes", R.drawable.notes),
-            GridItem("Quizes", R.drawable.quiz),
+    private fun displayGrid() {
+        val gridItems = arrayListOf(
+            GridItem("e-Books", R.drawable.notes),
+            GridItem("Quizzes", R.drawable.quiz),
             GridItem("Marked Questions", R.drawable.markesques),
             GridItem("Progress", R.drawable.progress)
         )
-
-        val myAdapter = MyGridAdapter(requireContext(), allGridItems)
-        grid.adapter = myAdapter
+        val gridView: GridView = binding.GridView
+        val gridAdapter = MyGridAdapter(requireContext(), gridItems)
+        gridView.adapter = gridAdapter
     }
 
-    private fun displayRecyclerView() {
-        val cardsRecyclerView: RecyclerView = binding.MyRecylerView
-        val gridLayoutManager = GridLayoutManager(requireContext(), 1, GridLayoutManager.VERTICAL, false)
-        cardsRecyclerView.layoutManager = gridLayoutManager
 
-        // Disable nested scrolling for RecyclerView
-        cardsRecyclerView.isNestedScrollingEnabled = false
 
-        val lowerGrid = arrayListOf(
-            RecyclerItem("Data Structures", "7 Topics", R.drawable.datastructures),
-            RecyclerItem("Algorithms", "4 Topics", R.drawable.algorithem),
-            RecyclerItem("OOP", "4 Topics", R.drawable.oops),
-            RecyclerItem("Operating System", "5 Topics", R.drawable.operatingsystems),
-            RecyclerItem("Databases", "6 Topics", R.drawable.databases),
-            RecyclerItem("Computer Networks", "5 Topics", R.drawable.computernetwork),
-            RecyclerItem("Mathematics For CS", "7 Topics", R.drawable.mathsforcs),
-            RecyclerItem("Programming Paradigms", "4 Topics", R.drawable.programmingpara),
-            RecyclerItem("Git Fundamentals", "4 Topics", R.drawable.git),
-            RecyclerItem("Security Basics", "4 Topics", R.drawable.securitybasis),
-        )
-
-        val lowerGridAdapter = MyRecyclerAdapter(lowerGrid)
-        cardsRecyclerView.adapter = lowerGridAdapter
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
-
-

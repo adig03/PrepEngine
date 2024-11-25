@@ -18,8 +18,8 @@ import com.example.codemastery.adapters.VideoLectureAdapter
 import com.example.codemastery.databinding.FragmentVideolistBinding
 import com.example.codemastery.repositiories.VideoRepository
 import com.example.codemastery.util.Resource
-import com.example.codemastery.viewModels.VideoLectureViewModelFactory
-import com.example.codemastery.viewModels.VideoLectureViewModels
+import com.example.codemastery.VModels.VideoLectureViewModelFactory
+import com.example.codemastery.VModels.VideoLectureViewModels
 
 class VideolistFragment : Fragment(R.layout.fragment_videolist) {
 
@@ -106,7 +106,7 @@ class VideolistFragment : Fragment(R.layout.fragment_videolist) {
     private fun observeVideoList() {
         viewModel.videoList.observe(viewLifecycleOwner, Observer { resource ->
             when (resource) {
-                is Resource.success -> {
+                is Resource.Success -> {
                     binding.loadingVideoList.visibility = View.GONE
                     resource.data?.let { videos ->
                         videoLectureAdapter.differ.submitList(videos)

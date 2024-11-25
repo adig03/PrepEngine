@@ -1,10 +1,10 @@
-package com.example.codemastery.viewModels
+package com.example.codemastery.VModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.codemastery.pdf.PdfRepository
+import com.example.codemastery.repositiories.PdfRepository
 
 import kotlinx.coroutines.launch
 

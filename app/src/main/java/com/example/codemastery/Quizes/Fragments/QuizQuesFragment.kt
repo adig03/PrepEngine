@@ -14,6 +14,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.codemastery.Models.QuestionModel
+import com.example.codemastery.Models.QuestionModelItem
+import com.example.codemastery.Models.QuizModel
 import com.example.codemastery.R
 import com.example.codemastery.databinding.FragmentQuizQuesBinding
 import com.example.codemastery.databinding.ScoreDialogBinding
@@ -27,7 +29,7 @@ class QuizQuesFragment : Fragment(R.layout.fragment_quiz_ques) {
     private var score :Int = 0
 
     companion object {
-        var questionModelList: List<QuestionModel> = listOf()
+        var questionModelList: List<QuestionModelItem> = listOf()
         var timer = ""
     }
 
@@ -130,7 +132,7 @@ class QuizQuesFragment : Fragment(R.layout.fragment_quiz_ques) {
 
         buttons.forEachIndexed { index, button ->
             button.setOnClickListener {
-                val correctAnswer = questionModelList[currentIndex].correct
+                val correctAnswer = questionModelList[currentIndex].answer
                 buttons.forEach { it.isEnabled = false }
 
                 if (button.text.toString() == correctAnswer) {

@@ -1,9 +1,7 @@
-package com.example.codemastery.pdf
+package com.example.codemastery.repositiories
 
-import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.launch
 
 class PdfRepository {
 

@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.codemastery.R
 import com.example.codemastery.adapters.PdfAdapter
 import com.example.codemastery.databinding.ActivityPdfBinding
-import com.example.codemastery.viewModels.PdfViewModel
-import com.example.codemastery.viewModels.PdfViewModelFactory
+import com.example.codemastery.repositiories.PdfRepository
+import com.example.codemastery.VModels.PdfViewModel
+import com.example.codemastery.VModels.PdfViewModelFactory
 
 class PdfActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPdfBinding

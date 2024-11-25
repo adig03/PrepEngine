@@ -1,8 +1,8 @@
-package com.example.codemastery.viewModels
+package com.example.codemastery.VModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.codemastery.pdf.PdfRepository
+import com.example.codemastery.repositiories.PdfRepository
 
 class PdfViewModelFactory(private val repo: PdfRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
